@@ -1,0 +1,123 @@
+from math import sqrt
+
+fct int fibo1(int n) {
+	""" Donne la valeur du nème élément de la suite de Fibonacci. """
+	if n == 0 {
+		return n //or 0
+	} elif n == 1 or n == 2 { //'or' or '||' are OK
+		return 1
+	} return fibo(n - 1) + fibo(n - 2)
+}
+
+
+fct int fibo2(int n) {
+	""" Donne la valeur du nème élément de la suite de Fibonacci
+	en utilisant le nombre d'or: (1 + sqrt(5)) / 2.0. """
+	x = 1. / sqrt(5)
+	y = sqrt(5)
+	return int((x * ((1 + y) / 2.) ** n) - (x * ((1 - y) / 2.) ** n))
+}
+
+
+fct give_fibo(int n) { //or fct void give_fibo(int n)
+	""" Donne les n premiers éléments de la suite de Fibonacci. """
+	a = 1 //or (var a = 1) or (var a: int = 1)
+	while a < n {
+		print fibo(a)
+		a += 1
+	}
+}
+
+
+class MyClass {
+	var tasty: boolean
+	
+	
+	fct MyClass(tasty) {
+		this.tasty = tasty
+	}
+	
+	
+	fct test() {
+		if (!tasty && true) {
+			print "It's alive !"
+		} else {
+			if a >= 2. {
+				print 2
+			}
+		}
+		do {
+			print "a"
+			break
+		} while true;
+	}
+	
+	
+	fct int fibo(int n) {
+		if n == 0 {
+			return n
+		} elif n == 1 or n == 2 {
+			return 1
+		}
+		return fibo(n - 1) + fibo(n - 2)
+	}
+}
+
+
+maClasse = new MyClass(true)
+print maClass.Fibo(5)
+
+
+class Person {
+
+	var(bDate: Date, dDate: Date, family: Family)
+	var gender, fName, lName, location: str
+	var lives = true
+	
+	
+	ctor Person() {
+		bDate = new Date(21 , 06 , 1994)
+		this.setDate()
+		(gender, fName, lName) = ("M", "John", "Smith")
+		(location, family) = ("New-York, USA", new Family())
+	}
+
+	
+	ctor Person(Date bDate, str gender, str fName, String lName, str location) {
+		(family, this.bDate) = (new Family(), bDate)
+		(this.fName, this.lName, this.location) = (fName, lName, location)
+		try {
+			if (gender.upper() != 'M' && gender.upper() != 'F' &&
+					gender.upper() != 'U') {
+				throw new GenderException()
+			}
+		} catch (GenderException ge){}
+		this.gender = gender
+	}
+
+	
+	ctor Person(Date bDate, Date dDate, str gender, str fName, String lName, str location) {
+		(family, this.bDate, this.dDate) = (new Family(), bDate, dDate)
+		(this.fName, this.lName, this.location) = (fName, lName, location)
+		setLives(false)
+		try {
+			if (gender.upper() != 'M' && gender.upper() != 'F' &&
+					gender.upper() != 'U') {
+				throw new GenderException()
+			}
+		} catch (GenderException ge) {}
+		this.gender = gender
+	}
+
+	
+	fct str toString() {
+		str res = fName + " " + lName
+		if (lives) {
+			res += " is a " + getStringAge() + " who lives in "
+		} else {
+			res += " was a " + getStringAge() + " who lived in "
+		}
+		return res + location + "."
+	}
+
+}
