@@ -1,4 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 # This is a test file
+
 import re
 
 KEYWORDS = ["if", "else", "elif", "else if", "while", "for", "switch", "null",
@@ -142,7 +146,7 @@ def dispOperator(symb):
 	return "ModAssign"
 
 
-def mySplit(code):
+def splitter(code):
 	"""
 	Splits the given code into a list of tokens.
 	"""
@@ -243,7 +247,7 @@ class Lexer(object):
 		tokens = [] # This will hold the generated tokens
 		#current_index = 0 # Number of spaces in the last opBlock
 		opBlock_stack = []
-		tr = mySplit(self.code)
+		tr = splitter(self.code)
 		
 		print tr
 	
@@ -339,7 +343,7 @@ class Lexer(object):
 	
 if __name__ == '__main__': #TODO: comments
 
-	cod = """
+	code = """
 class MyClass {
 	var tasty: boolean
 	
@@ -375,7 +379,7 @@ maClasse = new MyClass(true)
 print maClass.Fibo(5)
 """
 
-	code = """
+	cod = """
 class Person {
 
 	var(bDate: Date, dDate: Date, family: Family)
