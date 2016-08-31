@@ -4,7 +4,7 @@ fct int fibo1(int n) {
 	""" Donne la valeur du nème élément de la suite de Fibonacci. """
 	if n == 0 {
 		return n //or 0
-	} elif n == 1 or n == 2 { //'or' or '||' are OK
+	} elif n == 1 or n == 2 { //'or' and '||' are OK
 		return 1
 	} return fibo(n - 1) + fibo(n - 2)
 }
