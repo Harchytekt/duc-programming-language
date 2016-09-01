@@ -7,20 +7,22 @@ import re
 Token = collections.namedtuple('Token', ['type', 'value', 'line', 'column'])
 
 def tokenize(s):
-	keywords = {'IF', 'THEN', 'ENDIF', 'FOR', 'NEXT', 'GOSUB', 'RETURN'}
+	keywords = {'IF', 'ELSE', 'ELIF', 'DO', 'WHILE', 'FOR', 'NEXT', 'GOSUB', 'RETURN'}
 	token_specification = [
-	('NUMBER',  r'\d+(\.\d*)?'), # Integer or decimal number
+	('SKIP',    r'[ \t]'),       # Skip over spaces and tabs
+	('FLOAT',  r'\d+\.\d*'),     # Float
+	('INT',  r'\d+'),            # Integer
 	('EQUAL', r'=='),
 	('MATH', r'[<, >, <=, >=]'),
-	('ASSIGN',  r'='),          # Assignment operator
-	('END',     r';'),           # Statement terminator
+	('ASSIGN',  r'='),           # Assignment operator
+	#('END',     r';'),          # Statement terminator
+	('CONST',      r'[A-Z]+'),   # Constants
 	('ID',      r'[A-Za-z]+'),   # Identifiers
 	('OP',      r'[+*\/\-]'),    # Arithmetic operators
 	('OPEN_BLOCK', r'{'),
 	('CLOSE_BLOCK', r'}'),
-	('END_DOWHILE', r':'),
+	('END_DOWHILE', r';'),
 	('NEWLINE', r'\n'),          # Line endings
-	('SKIP',    r'[ \t]'),       # Skip over spaces and tabs
 	]
 	tok_regex = '|'.join('(?P<%s>%s)' % pair for pair in token_specification)
 	get_token = re.compile(tok_regex).match
@@ -34,8 +36,8 @@ def tokenize(s):
 			line += 1
 		elif typ != 'SKIP':
 			val = mo.group(typ)
-			if typ == 'ID' and val in keywords:
-				typ = val
+			if typ == 'ID' and val.upper() in keywords:
+				typ = val.upper()
 			yield Token(typ, val, line, mo.start()-line_start)
 		pos = mo.end()
 		mo = get_token(s, pos)
@@ -53,7 +55,7 @@ if tasty == true{
 }
 do {
 	pass
-} while true:
+} while true;
 """
 
 for token in tokenize(cod):
