@@ -1,6 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import re
 
 KEYWORDS = ["class", "fct", "true", "false", "not", "if", "else", "elif",

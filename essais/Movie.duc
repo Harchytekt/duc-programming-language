@@ -1,0 +1,110 @@
+class Movie {
+    var title, director, date, gender, plot : str
+    var cover = "Resources\\covers\\ANewHope.png"
+
+    ctor Movie() {
+        title = "Star Wars Episode IV: A New Hope"
+        director = "Georges Lucas"
+        date = "25/5/1977"
+        gender = "Science fiction"
+        cover = "Resources\\covers\\ANewHope.png"
+        plot = """The Imperial Forces - under orders from cruel Darth Vader (David Prowse) - hold Princess Leia (Carrie Fisher) hostage, in their efforts to quell the rebellion against the Galactic Empire.
+    Luke Skywalker (Mark Hamill) and Han Solo (Harrison Ford), captain of the Millennium Falcon, work together with the companionable droid duo R2-D2 (Kenny Baker) and C-3PO (Anthony Daniels) to rescue the beautiful princess, help the Rebel Alliance, and restore freedom and justice to the Galaxy."""
+    }
+
+    ctor Movie(str title, str director, str date, str gender, str plot) {
+        this.title, this.director, this.date, this.gender, this.plot =
+        title, director, date, gender, plot
+    }
+
+    fct str ToString() {
+        str movieInfos = "Title: " + title + "\n"
+        movieInfos += "Director: " + director + "\n"
+        movieInfos += "Date: " + date + "\n"
+        movieInfos += "Gender: " + gender + "\n"
+        movieInfos += "Cover: " + cover + "\n"
+        movieInfos += "Plot: " + plot
+        return movieInfos
+    }
+
+    fct void setTitle(str title) {
+        this.title = title
+    }
+
+    fct str getTitle() {
+        return title
+    }
+
+    fct void setDirector(str director) {
+        this.director = director
+    }
+
+    fct str getDirector() {
+        return director
+    }
+
+    fct void setDate(str date) {
+        this.date = date
+    }
+
+    fct str getDate() {
+        return date
+    }
+
+    fct void setGender(str gender) {
+        this.gender = gender
+    }
+
+    fct str getGender() {
+        return gender
+    }
+
+    fct void setCover(str cover) {
+        this.cover = cover
+    }
+
+    fct str getCover() {
+        return cover
+    }
+
+    fct void setPlot(str plot) {
+        this.plot = plot
+    }
+
+    fct str getPlot() {
+        return plot
+    }
+
+    fct addItem(str item, int nbItem) {
+        switch(nbItem) {
+            case 0:
+                title = item
+                break
+            case 1:
+                director = item
+                break
+            case 2:
+                date = item
+                break
+            case 3:
+                gender = item
+                break
+            case 4:
+                cover = item
+                break
+            case 5:
+                plot = item
+                break
+            default:
+                plot += "\n" + item
+                break
+        }
+    }
+
+    fct boolean contains(str text) {
+        text = text.ToLower()
+        return (title.ToLower().Contains(text) || director.ToLower().Contains(text) ||
+date.Contains(text) || gender.ToLower().Contains(text) || plot.ToLower().Contains(text));
+    }
+
+ }
